@@ -4,9 +4,7 @@
 DB연동 고객관리 웹페이지 개발
 
 ### 개발환경
-- yarn
-- react
-- express
-
+- npm install
+- AWS RDS Service
 ### 실행
 - yarn dev
