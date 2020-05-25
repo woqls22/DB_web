@@ -4,5 +4,9 @@
 DB연동 고객관리 웹페이지 개발
 
 ### 개발환경
-- yarn start
+- yarn
+- react
+- express
 
+### 실행
+- yarn dev
