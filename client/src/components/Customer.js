@@ -7,13 +7,15 @@ class Customer extends React.Component{
     render(){
         return(  
             <TableRow>
-                <TableCell>{this.props.id}</TableCell>
-                <TableCell><img src = {this.props.image} alt = "profile"/></TableCell>
-                <TableCell>{this.props.name}</TableCell>
-                <TableCell>{this.props.birthday}</TableCell>
-                <TableCell>{this.props.gender}</TableCell>
+                <TableCell>{this.props.empno}</TableCell>
+                <TableCell>{this.props.ename}</TableCell>
                 <TableCell>{this.props.job}</TableCell>
-                <TableCell><CustomerDelete stateRefresh = {this.props.stateRefresh} id = {this.props.id}/></TableCell>
+                <TableCell>{this.props.mgr}</TableCell>
+                <TableCell>{this.props.hiredate}</TableCell>
+                <TableCell>{this.props.sal}</TableCell>
+                <TableCell>{this.props.comm}</TableCell>
+                <TableCell>{this.props.deptno}</TableCell>
+                <TableCell><CustomerDelete stateRefresh = {this.props.stateRefresh} empno = {this.props.empno}/></TableCell>
             </TableRow>
         );
     }

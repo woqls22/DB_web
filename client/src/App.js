@@ -136,10 +136,10 @@ class App extends Component{
   render(){
     const filteredComponents=(data)=>{
       data = data.filter((c)=>{
-        return c.name.indexOf(this.state.searchKeyword)>-1;
+        return c.ename.indexOf(this.state.searchKeyword)>-1;
       });
       return data.map((c)=>{
-        return <Customer stateRefresh={this.stateRefresh} key = {c.id} id = {c.id} image = {c.image} name = {c.name} birthday= {c.birthday} gender = {c.gender} job = {c.job}/>
+        return <Customer stateRefresh={this.stateRefresh} key = {c.empno } empno  = {c.empno } ename = {c.ename} job = {c.job} mgr = {c.mgr} hiredate  = {c.hiredate } sal = {c.sal} comm = {c.comm} deptno= {c.deptno}/>
       });
     }
     const {classes} = this.props;
@@ -156,14 +156,14 @@ class App extends Component{
             <MenuIcon />
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
-            고객관리시스템
+            임직원관리시스템
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
             <InputBase
-              placeholder="검색하기"
+              placeholder="이름 검색[대,소문자구별]"
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput,
@@ -183,12 +183,14 @@ class App extends Component{
         <Table className = {classes.table}>
           <TableHead>
             <TableRow>
-              <TableCell>고객번호</TableCell>
-              <TableCell>프로필 이미지</TableCell>
+              <TableCell>사번</TableCell>
               <TableCell>이름</TableCell>
-              <TableCell>생년월일</TableCell>
-              <TableCell>성별</TableCell>
-              <TableCell>직업</TableCell>
+              <TableCell>직책</TableCell>
+              <TableCell>매니저</TableCell>
+              <TableCell>고용일</TableCell>
+              <TableCell>급여</TableCell>
+              <TableCell>커미션</TableCell>
+              <TableCell>부서명</TableCell>
               <TableCell>설정</TableCell>
             </TableRow>
           </TableHead>

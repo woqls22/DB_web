@@ -18,12 +18,14 @@ class CustomerAdd extends React.Component{
     constructor(props){
         super(props);
         this.state={
-            file:null,
-            userName:'',
-            birthday:'',
-            gender:'',
-            job:'',
-            fileName:'',
+            empno :'',
+            ename :'',
+            job :'',
+            mgr :'',
+            hiredate :'',
+            sal  :'',
+            comm  :'',
+            deptno  :'',
             open : false
         }
     }
@@ -35,19 +37,15 @@ class CustomerAdd extends React.Component{
                 this.props.stateRefresh();
             })
         this.setState({
-            file:null,
-            userName:'',
-            birthday:'',
-            gender:'',
-            job:'',
-            fileName:'',
+            empno :'',
+            ename :'',
+            job :'',
+            mgr :'',
+            hiredate :'',
+            sal  :'',
+            comm  :'',
+            deptno  :'',
             open:false
-        })
-    }
-    handleFileChange=(e)=>{
-        this.setState({
-            file:e.target.files[0],
-            fileName:e.target.value
         })
     }
     handleValueChange=(e)=>{
@@ -56,19 +54,17 @@ class CustomerAdd extends React.Component{
         this.setState(nextState);
     }
     addCustomer=()=>{
-        const url = 'api/customers';
+        const url = '/api/customers';
         const formData = new FormData();
-        formData.append('image', this.state.file);
-        formData.append('name',this.state.userName);
-        formData.append('birthday',this.state.birthday);
-        formData.append('gender',this.state.gender);
-        formData.append('job',this.state.job);
-        const config = {
-            headers:{
-                'content-type':'multipart/form-data'
-            }
-        }
-        return post(url, formData, config);
+        formData.append('empno',this.state.empno );
+        formData.append('ename',this.state.ename );
+        formData.append('job',this.state.job );
+        formData.append('mgr',this.state.mgr );
+        formData.append('hiredate',this.state.hiredate );
+        formData.append('sal',this.state.sal );
+        formData.append('comm',this.state.comm );
+        formData.append('deptno',this.state.deptno );
+        return post(url, formData);
     }
 
     handleClickOpen = ()=>{
@@ -78,12 +74,14 @@ class CustomerAdd extends React.Component{
     }
     handleClose = ()=>{
         this.setState({
-            file:null,
-            userName:'',
-            birthday:'',
-            gender:'',
-            job:'',
-            fileName:'',
+            empno :'',
+            ename :'',
+            job :'',
+            mgr :'',
+            hiredate :'',
+            sal  :'',
+            comm  :'',
+            deptno  :'',
             open:false
         })
     }
@@ -93,25 +91,27 @@ class CustomerAdd extends React.Component{
             <div>
                 <br/>
                 <Button variant = "contained" color="priomary" onClick={this.handleClickOpen}>
-                    고객 추가하기
+                    임직원 추가하기
                 </Button>
                 <Dialog open={this.state.open} onClose={this.handleClose}>
-                    <DialogTitle>고객 추가</DialogTitle>
+                    <DialogTitle>사원 추가</DialogTitle>
                     <DialogContent>
-                    <input className = {classes.hidden}accept = "image/*" id = "raised-button-file" type = "file"file = {this.state.file} value = {this.state.fileName} onChange={this.handleFileChange}/>
-                    <label htmlFor="raised-button-file">
-                        <Button variant="contained" color = "primary" component = "span" name = "file">
-                            {this.state.fileName == "" ? "프로필 이미지 선택" : this.state.fileName}
-                        </Button>
-                    </label>
                     <br/>
-                   <TextField label = "이름" type = "text" name = "userName" value = {this.state.userName} onChange = {this.handleValueChange}/>
+                   <TextField label = "사번" type = "text" name = "empno" value = {this.state.empno} onChange = {this.handleValueChange}/>
                    <br/>
-                   <TextField label = "생년월일"  type = "text" name = "birthday" value={this.state.birthday} onChange = {this.handleValueChange}/>
+                   <TextField label = "이름"  type = "text" name = "ename" value={this.state.ename} onChange = {this.handleValueChange}/>
                    <br/>
-                   <TextField label = "성별" type = "text" name = "gender" value = {this.state.gender} onChange={this.handleValueChange}/>
+                   <TextField label = "직책" type = "text" name = "job" value = {this.state.job} onChange = {this.handleValueChange}/>
                    <br/>
-                    <TextField label = "직업" type = "text" name = "job" value={this.state.job} onChange = {this.handleValueChange}/>
+                   <TextField label = "담당매니저 사번" type = "text" name = "mgr" value = {this.state.mgr} onChange = {this.handleValueChange}/>
+                   <br/>
+                   <TextField label = "고용일[YYYY-MM-DD]" type = "text" name = "hiredate" value = {this.state.hiredate} onChange = {this.handleValueChange}/>
+                   <br/>
+                   <TextField label = "급여" type = "text" name = "sal" value = {this.state.sal} onChange={this.handleValueChange}/>
+                   <br/>
+                    <TextField label = "커미션" type = "text" name = "comm" value={this.state.comm} onChange = {this.handleValueChange}/>
+                    <br/>
+                    <TextField label = "부서번호" type = "text" name = "deptno" value={this.state.deptno} onChange = {this.handleValueChange}/>
                     <br/>
                     </DialogContent>
                     <DialogActions>
