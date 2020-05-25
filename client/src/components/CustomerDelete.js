@@ -1,5 +1,5 @@
 import React from 'react'
-
+import Button from '@material-ui/core/Button'
 class CustomerDelete extends React.Component{
     delteCustomer(id){
         const url = '/api/customers/'+id;
@@ -10,7 +10,7 @@ class CustomerDelete extends React.Component{
     }
     render(){
         return(
-            <button onClick={(e)=>this.delteCustomer(this.props.id)}>삭제</button>
+            <Button variant = "contained" color="priomary" onClick={(e)=>this.delteCustomer(this.props.id)}>삭제</Button>
         )
     }
 }
