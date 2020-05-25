@@ -1,7 +1,7 @@
-고객관리 시스템 개발 [With react]
+DB연동 HR 웹시스템 개발 [With react, AWS RDS Service]
 
 ## 주제
-DB연동 고객관리 웹페이지 개발
+DB연동 HR 웹시스템
 
 ### 개발환경
 - npm install
