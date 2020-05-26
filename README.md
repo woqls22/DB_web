@@ -1,4 +1,4 @@
-DB연동 HR 웹시스템 개발 [With react, AWS RDS Service]
+DB연동 HR 웹시스템 개발 [With react, AWS RDS Service, express web server]
 
 ## 주제
 DB연동 HR 웹시스템
