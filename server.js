@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 
 connection.connect();
 
-app.get('/api/customers',(req,res)=>{
+app.get('/api/employees',(req,res)=>{
     connection.query(
         "SELECT E.empno, E.ename, E.job, M.ENAME mgr , date_format(E.hiredate,'%Y-%m-%d') hiredate, E.sal, E.comm, D.DNAME deptno FROM EMP E, EMP M, DEPT D WHERE E.DEPTNO = D.DEPTNO && E.MGR=M.EMPNO",
         (err,rows,fields)=>{
@@ -29,7 +29,7 @@ app.get('/api/customers',(req,res)=>{
     );
 });
 
-app.post('/api/customers',upload.single('image'),(req,res)=>{
+app.post('/api/employees',upload.single('image'),(req,res)=>{
     let sql = "INSERT INTO EMP VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
     let empno = parseInt(req.body.empno);
     let ename = req.body.ename;
@@ -46,7 +46,7 @@ app.post('/api/customers',upload.single('image'),(req,res)=>{
         res.send(rows);
    });
 });
-app.delete('/api/customers/:empno', (req,res)=>{
+app.delete('/api/employees/:empno', (req,res)=>{
     let sql = 'DELETE FROM EMP WHERE empno = ?';
     let params = parseInt([req.params.empno]);
     connection.query(sql,params,

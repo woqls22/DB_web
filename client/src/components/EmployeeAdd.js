@@ -14,7 +14,7 @@ const styles = theme=>({
     }
 });
 
-class CustomerAdd extends React.Component{
+class EmployeeAdd extends React.Component{
     constructor(props){
         super(props);
         this.state={
@@ -31,7 +31,7 @@ class CustomerAdd extends React.Component{
     }
     handleFormSubmit=(e)=>{
         e.preventDefault()
-        this.addCustomer()
+        this.addEmployee()
             .then((response)=>{
                 console.log(response.data);
                 this.props.stateRefresh();
@@ -53,8 +53,8 @@ class CustomerAdd extends React.Component{
         nextState[e.target.name]=e.target.value;
         this.setState(nextState);
     }
-    addCustomer=()=>{
-        const url = '/api/customers';
+    addEmployee=()=>{
+        const url = '/api/employees';
         const formData = new FormData();
         formData.append('empno',this.state.empno );
         formData.append('ename',this.state.ename );
@@ -123,4 +123,4 @@ class CustomerAdd extends React.Component{
         )
     }
 }
-export default withStyles(styles)(CustomerAdd);
+export default withStyles(styles)(EmployeeAdd);

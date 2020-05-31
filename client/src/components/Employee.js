@@ -1,9 +1,9 @@
 import React from 'react'
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
-import CustomerDelete from './CustomerDelete';
+import EmployeeDelete from './EmployeeDelete';
 
-class Customer extends React.Component{
+class Employee extends React.Component{
     render(){
         return(  
             <TableRow>
@@ -15,9 +15,9 @@ class Customer extends React.Component{
                 <TableCell>{this.props.sal}</TableCell>
                 <TableCell>{this.props.comm}</TableCell>
                 <TableCell>{this.props.deptno}</TableCell>
-                <TableCell><CustomerDelete stateRefresh = {this.props.stateRefresh} empno = {this.props.empno}/></TableCell>
+                <TableCell><EmployeeDelete stateRefresh = {this.props.stateRefresh} empno = {this.props.empno}/></TableCell>
             </TableRow>
         );
     }
 }
-export default Customer;
+export default Employee;

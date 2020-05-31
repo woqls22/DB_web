@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Customer from './components/Customer'
+import Employee from './components/Employee'
 import './App.css';
 import Paper from '@material-ui/core/Paper'
 import Table from '@material-ui/core/Table';
@@ -8,7 +8,7 @@ import TableBody from '@material-ui/core/TableBody';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 import {withStyles} from '@material-ui/core/styles';
-import CustomerAdd from './components/CustomerAdd'
+import EmployeeAdd from './components/EmployeeAdd'
 import CircularProgress from '@material-ui/core/CircularProgress';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -95,31 +95,31 @@ class App extends Component{
   constructor (props){
     super (props);
     this.state = {
-      customers:'',
+      employees:'',
       completed:0,
       searchKeyword:''
     }
   }
   stateRefresh=()=>{
     this.setState({
-      customers:'',
+      employees:'',
       completed:0,
       searchKeyword:''
     });
     this.callApi()
     .then(res=>this
-    .setState({customers:res}))
+    .setState({employees:res}))
     .catch(err=>console.log(err));
   }
   componentDidMount(){
     this.timer = setInterval(this.progress, 20);
     this.callApi()
       .then(res=>this
-      .setState({customers:res}))
+      .setState({employees:res}))
       .catch(err=>console.log(err));
   }
   callApi = async()=>{
-    const response = await fetch('/api/customers');
+    const response = await fetch('/api/employees');
     const body = await response.json();
     return body;
   }
@@ -139,7 +139,7 @@ class App extends Component{
         return c.ename.indexOf(this.state.searchKeyword)>-1;
       });
       return data.map((c)=>{
-        return <Customer stateRefresh={this.stateRefresh} key = {c.empno } empno  = {c.empno } ename = {c.ename} job = {c.job} mgr = {c.mgr} hiredate  = {c.hiredate } sal = {c.sal} comm = {c.comm} deptno= {c.deptno}/>
+        return <Employee stateRefresh={this.stateRefresh} key = {c.empno } empno  = {c.empno } ename = {c.ename} job = {c.job} mgr = {c.mgr} hiredate  = {c.hiredate } sal = {c.sal} comm = {c.comm} deptno= {c.deptno}/>
       });
     }
     const {classes} = this.props;
@@ -177,7 +177,7 @@ class App extends Component{
         </Toolbar>
       </AppBar>
       <div className = {classes.menu}>
-      <CustomerAdd stateRefresh={this.stateRefresh}/>
+      <EmployeeAdd stateRefresh={this.stateRefresh}/>
       </div>
       <Paper className = {classes.paper}>
         <Table className = {classes.table}>
@@ -195,8 +195,8 @@ class App extends Component{
             </TableRow>
           </TableHead>
           <TableBody>
-          {this.state.customers ? 
-            filteredComponents(this.state.customers) :
+          {this.state.employees ? 
+            filteredComponents(this.state.employees) :
           <TableRow>
             <TableCell colSpan="6" align="center">
               <CircularProgress className = {classes.progress} variant = "determinate" value = {this.state.completed}/>
