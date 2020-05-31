@@ -186,6 +186,7 @@ class App extends Component{
               <TableCell>사번</TableCell>
               <TableCell>이름</TableCell>
               <TableCell>직책</TableCell>
+              <TableCell>직책수정</TableCell>
               <TableCell>매니저</TableCell>
               <TableCell>고용일</TableCell>
               <TableCell>급여</TableCell>
