@@ -15,18 +15,29 @@ const connection = mysql.createConnection({
     port:conf.port,
     database:conf.database
 });
-app.use(bodyParser.json());
+
+
 app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json());
 
 connection.connect();
 
 app.get('/api/employees',(req,res)=>{
     connection.query(
-        "SELECT E.empno, E.ename, E.job, M.ENAME mgr , date_format(E.hiredate,'%Y-%m-%d') hiredate, E.sal, E.comm, D.DNAME deptno FROM EMP E, EMP M, DEPT D WHERE E.DEPTNO = D.DEPTNO && E.MGR=M.EMPNO",
+        "SELECT E.empno, E.ename, E.job, M.ENAME mgr , date_format(E.hiredate,'%Y-%m-%d') hiredate, E.sal, E.comm, D.DNAME deptno FROM EMP E, EMP M, DEPT D WHERE E.DEPTNO = D.DEPTNO && E.MGR=M.EMPNO order by E.empno",
         (err,rows,fields)=>{
             res.send(rows);
         }
     );
+});
+app.post('/api/employees/jobmodify/:empno',upload.single('image'),(req,res)=>{
+    let sql = "UPDATE EMP SET JOB=? WHERE empno = ?"; //수정해야됨
+    let job = req.body.job;
+    let empno = parseInt([req.params.empno]);
+    let params = [job, empno];
+    connection.query(sql,params, (err,rows,fields)=>{
+        res.send(rows);
+   });
 });
 
 app.post('/api/employees',upload.single('image'),(req,res)=>{
@@ -40,9 +51,7 @@ app.post('/api/employees',upload.single('image'),(req,res)=>{
     let comm = parseInt(req.body.comm);
     let deptno = parseInt(req.body.deptno);
     let params = [empno, ename, job, mgr, hiredate,sal, comm, deptno];
-    console.log(params);
     connection.query(sql,params, (err,rows,fields)=>{
-        console.log(rows);
         res.send(rows);
    });
 });
