@@ -40,7 +40,7 @@ app.post('/api/employees/jobmodify/:empno',upload.single('image'),(req,res)=>{
    });
 });
 app.post('/api/employees/deptmodify/:empno',upload.single('image'),(req,res)=>{
-    let sql = ""; 
+    let sql = "UPDATE EMP SET deptno = (SELECT deptno FROM DEPT WHERE DNAME = ?) WHERE empno = ?"; 
     let dept = req.body.dept;
     let empno = parseInt([req.params.empno]);
     let params = [dept, empno];
