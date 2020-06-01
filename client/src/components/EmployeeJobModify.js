@@ -65,10 +65,10 @@ class EmployeeJobModify extends React.Component{
         return(
             <div>                
                 <Button variant = "contained" color="priomary" onClick={this.handleClickOpen}>
-                    직책수정
+                    수정
                 </Button>
                 <Dialog open={this.state.open} onClose={this.handleClose}>
-                    <DialogTitle>수정</DialogTitle>
+                    <DialogTitle>직책수정</DialogTitle>
                     <DialogContent>
                     <br/>
                    <TextField label = "변경 직책입력" type = "text" name = "job" value = {this.state.job} onChange = {this.handleValueChange}/>
