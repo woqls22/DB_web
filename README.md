@@ -8,3 +8,5 @@ DB연동 HR 웹시스템
 - AWS RDS Service
 ### 실행
 - yarn dev
+
+![1](./1.JPG)
