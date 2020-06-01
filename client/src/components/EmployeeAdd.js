@@ -20,12 +20,12 @@ class EmployeeAdd extends React.Component{
         this.state={
             empno :'',
             ename :'',
-            job :'',
-            mgr :'',
-            hiredate :'',
-            sal  :'',
-            comm  :'',
-            deptno  :'',
+            job :'사원',
+            mgr :'1001',
+            hiredate :'2020-05-01',
+            sal  :'0',
+            comm  :'0',
+            deptno  :'0',
             open : false
         }
     }
@@ -39,12 +39,12 @@ class EmployeeAdd extends React.Component{
         this.setState({
             empno :'',
             ename :'',
-            job :'',
-            mgr :'',
-            hiredate :'',
-            sal  :'',
-            comm  :'',
-            deptno  :'',
+            job :'사원',
+            mgr :'1001',
+            hiredate :'2020-05-01',
+            sal  :'1000',
+            comm  :'0',
+            deptno  :'0',
             open:false
         })
     }
@@ -76,12 +76,12 @@ class EmployeeAdd extends React.Component{
         this.setState({
             empno :'',
             ename :'',
-            job :'',
-            mgr :'',
-            hiredate :'',
-            sal  :'',
-            comm  :'',
-            deptno  :'',
+            job :'사원',
+            mgr :'1001',
+            hiredate :'2020-05-01',
+            sal  :'1000',
+            comm  :'0',
+            deptno  :'0',
             open:false
         })
     }

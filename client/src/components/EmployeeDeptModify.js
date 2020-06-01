@@ -14,25 +14,25 @@ const styles = theme=>({
     }
 });
 
-class EmployeeJobModify extends React.Component{
+class EmployeeDeptModify extends React.Component{
     constructor(props){
         super(props);
         this.state={
             empno :'',
-            job :'',
+            dept :'',
             open : false
         }
     }
     handleFormSubmit=(e)=>{
         e.preventDefault()
-        this.modifyJob(this.props.empno)
+        this.modifyDept(this.props.empno)
             .then((response)=>{
                 console.log(response.data);
                 this.props.stateRefresh();
             })
         this.setState({
             empno :'',
-            job :'',
+            dept :'',
             open:false
         })
     }
@@ -41,10 +41,10 @@ class EmployeeJobModify extends React.Component{
         nextState[e.target.name]=e.target.value;
         this.setState(nextState);
     }
-    modifyJob=(empno)=>{
-        const url = '/api/employees/jobmodify/'+empno;
+    modifyDept=(empno)=>{
+        const url = '/api/employees/deptmodify/'+empno;
         const formData = new FormData();
-        formData.append('job',this.state.job );
+        formData.append('dept',this.state.dept );
         return post(url, formData);
     }
 
@@ -56,7 +56,7 @@ class EmployeeJobModify extends React.Component{
     handleClose = ()=>{
         this.setState({
             empno :'',
-            job :'',
+            dept :'',
             open:false
         })
     }
@@ -65,13 +65,13 @@ class EmployeeJobModify extends React.Component{
         return(
             <div>                
                 <Button variant = "contained" color="priomary" onClick={this.handleClickOpen}>
-                    직책수정
+                    수정
                 </Button>
                 <Dialog open={this.state.open} onClose={this.handleClose}>
-                    <DialogTitle>수정</DialogTitle>
+                    <DialogTitle>부서 수정</DialogTitle>
                     <DialogContent>
                     <br/>
-                   <TextField label = "변경 직책입력" type = "text" name = "job" value = {this.state.job} onChange = {this.handleValueChange}/>
+                   <TextField label = "부서명을 입력하세요" type = "text" name = "dept" value = {this.state.dept} onChange = {this.handleValueChange}/>
                    <br/>
                     </DialogContent>
                     <DialogActions>
@@ -83,4 +83,4 @@ class EmployeeJobModify extends React.Component{
         )
     }
 }
-export default withStyles(styles)(EmployeeJobModify);
+export default withStyles(styles)(EmployeeDeptModify);

@@ -3,6 +3,7 @@ import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 import EmployeeDelete from './EmployeeDelete';
 import EmployeeJobModify from './EmployeeJobModify';
+import EmployeeDeptModify from './EmployeeDeptModify';
 
 class Employee extends React.Component{
     render(){
@@ -17,6 +18,7 @@ class Employee extends React.Component{
                 <TableCell>{this.props.sal}</TableCell>
                 <TableCell>{this.props.comm}</TableCell>
                 <TableCell>{this.props.deptno}</TableCell>
+                <TableCell><EmployeeDeptModify stateRefresh = {this.props.stateRefresh} empno = {this.props.empno}/></TableCell>
                 <TableCell><EmployeeDelete stateRefresh = {this.props.stateRefresh} empno = {this.props.empno}/></TableCell>
             </TableRow>
         );

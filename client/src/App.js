@@ -192,6 +192,7 @@ class App extends Component{
               <TableCell>급여</TableCell>
               <TableCell>커미션</TableCell>
               <TableCell>부서명</TableCell>
+              <TableCell>부서수정</TableCell>
               <TableCell>설정</TableCell>
             </TableRow>
           </TableHead>

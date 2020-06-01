@@ -10,7 +10,7 @@ class EmployeeDelete extends React.Component{
     }
     render(){
         return(
-            <Button variant = "contained" color="priomary" onClick={(e)=>this.deleteEmployee(this.props.empno )}>삭제</Button>
+            <Button variant = "contained" color="priomary" onClick={(e)=>this.deleteEmployee(this.props.empno )}>사원데이터삭제</Button>
         )
     }
 }
