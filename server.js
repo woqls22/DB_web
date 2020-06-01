@@ -39,6 +39,16 @@ app.post('/api/employees/jobmodify/:empno',upload.single('image'),(req,res)=>{
         res.send(rows);
    });
 });
+app.post('/api/employees/deptmodify/:empno',upload.single('image'),(req,res)=>{
+    let sql = ""; //수정해야됨
+    let dept = req.body.dept;
+    let empno = parseInt([req.params.empno]);
+    let params = [dept, empno];
+    console.log(params);
+    connection.query(sql,params, (err,rows,fields)=>{
+        res.send(rows);
+   });
+});
 
 app.post('/api/employees',upload.single('image'),(req,res)=>{
     let sql = "INSERT INTO EMP VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
